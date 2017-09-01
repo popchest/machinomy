@@ -218,7 +218,7 @@ describe('receiver', () => {
     describe('#acceptPayment', () => {
       let channelId = support.randomChannelId()
       let receiverAccount = '0xdeadbeaf'
-      let payment = new channel.Payment({
+      let payment = new Payment({
         channelId: channelId.toString(),
         sender: 'sender',
         receiver: receiverAccount,

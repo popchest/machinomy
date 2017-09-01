@@ -5,10 +5,11 @@ import * as channel from '../lib/channel'
 import { randomStorage } from './support'
 import Payment from '../lib/Payment'
 import Promise = require('bluebird')
+const engine_name = process.env.ENGINE_NAME || 'nedb'
 
 const randomSender = (): Promise<Sender> => {
   let web3 = support.fakeWeb3()
-  return randomStorage(web3).then(storage => {
+  return randomStorage(web3, engine_name).then(storage => {
     return new Sender(web3, '0xdeadbeaf', channel.contract(web3), transport.build(), storage)
   })
 }
